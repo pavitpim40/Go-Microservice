@@ -23,5 +23,6 @@ func(h *Handle) CallLogin(c echo.Context) error{
 
 	fmt.Println("my is := ", req)
 	data := h.service.Login(req)
+	fmt.Println("data in callLogin is := ", data)
 	return c.JSON(http.StatusOK, data)
 }

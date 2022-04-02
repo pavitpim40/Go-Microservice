@@ -3,6 +3,7 @@ package main
 // const json = `{"name":{"first":"Janet","last":"Prichard"},"age":47}`
 import (
 	"fmt"
+	"golang-project/repository"
 	"golang-project/service"
 	"log"
 	"runtime"
@@ -45,11 +46,13 @@ func NewMySQL() *gorm.DB {
    }
 
 func main(){
-
-
-	e := echo.New()
-	ser := service.NewHandle(service.NewService())
+	var (
+		e = echo.New()
+		database = NewMySQL()
+	)
+	defer database.Close()
+	ser := service.NewHandle(service.NewService(repository.New(database)))
 	e.GET("/", ser.CallLogin)
-	NewMySQL() 
+ 
 	e.Logger.Fatal(e.Start(":" + viper.GetString("app.port")))
 }
