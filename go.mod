@@ -9,6 +9,8 @@ require (
 	github.com/spf13/viper v1.10.1
 )
 
+require github.com/pavitpim40/Go-Secret v0.0.0-20220402074030-aaab7fa4f63d // indirect
+
 require (
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
