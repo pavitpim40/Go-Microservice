@@ -1,6 +1,7 @@
 package service
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/labstack/echo/v4"
@@ -16,6 +17,11 @@ func NewHandle(service Servicer) *Handle{
 
 func(h *Handle) CallLogin(c echo.Context) error{
 	var req Request
+	if err := c.Bind(&req); err != nil {
+		return c.JSON(http.StatusBadRequest, "invalid req")
+	}
+
+	fmt.Println("my is := ", req)
 	data := h.service.Login(req)
 	return c.JSON(http.StatusOK, data)
 }

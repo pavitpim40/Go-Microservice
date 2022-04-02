@@ -3,7 +3,6 @@ module golang-project
 go 1.18
 
 require (
-	github.com/labstack/echo v3.3.10+incompatible
 	github.com/labstack/echo/v4 v4.7.2
 	github.com/spf13/viper v1.10.1
 )
