@@ -26,3 +26,15 @@ func(h *Handle) CallLogin(c echo.Context) error{
 	fmt.Println("data in callLogin is := ", data)
 	return c.JSON(http.StatusOK, data)
 }
+
+func(h *Handle) CallRegister(c echo.Context) error{
+	var req RequestReg
+	if err := c.Bind(&req); err != nil {
+		return c.JSON(http.StatusBadRequest, "invalid req")
+	}
+
+	fmt.Println("my is := ", req)
+	data := h.service.Register(req)
+	fmt.Println("data in callRegister is := ", data)
+	return c.JSON(http.StatusOK, data)
+}

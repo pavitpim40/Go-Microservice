@@ -52,7 +52,8 @@ func main(){
 	)
 	defer database.Close()
 	ser := service.NewHandle(service.NewService(repository.New(database)))
-	e.GET("/", ser.CallLogin)
+	e.POST("/login", ser.CallLogin)
+	e.POST("/register", ser.CallRegister)
  
 	e.Logger.Fatal(e.Start(":" + viper.GetString("app.port")))
 }
