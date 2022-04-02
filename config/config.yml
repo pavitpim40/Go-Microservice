@@ -2,5 +2,9 @@
 app:
   name : "traning golang"
   port : 1323
-data:
-  name:
+database:
+  user: root
+  pass: 1qaz2wsx3edc
+  port: 3306
+  host: localhost
+  dbname: golang
