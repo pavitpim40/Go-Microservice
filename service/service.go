@@ -25,7 +25,7 @@ func NewService(db Dber) *Service{
 	return &Service{db :db}
 }
 
-func (s *Service) Register (req RequestReg) ResponseReg{
+func (s *Service) Register(req RequestReg) ResponseReg{
 		reqDB := repository.TblLogin{
 		Username : req.Username,
 		Password : req.Password,
@@ -40,7 +40,7 @@ func (s *Service) Register (req RequestReg) ResponseReg{
 	}
 }
 
-func (s *Service)Login(req Request) Response{
+func (s *Service) Login(req Request) Response{
 	data,_ := s.db.LoginDB(req.Username,req.Password)
 	fmt.Printf("data in service is %v",data)
 	return Response{
